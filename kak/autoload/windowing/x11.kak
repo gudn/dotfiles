@@ -1,0 +1,1 @@
+/usr/share/kak/autoload/windowing/x11.kak

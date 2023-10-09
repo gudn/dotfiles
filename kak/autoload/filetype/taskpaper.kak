@@ -1,0 +1,1 @@
+/usr/share/kak/autoload/filetype/taskpaper.kak
