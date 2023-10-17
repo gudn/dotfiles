@@ -14,13 +14,6 @@ define-command open -params ..1 -docstring "open a file" %{
   }
 }
 
-define-command qalc -docstring "advanced math with qalc" %{
-  prompt -init %val{selection} -shell-script-candidates %{ qalc +u8 --list-functions| head -n -3 | sed -r -e 's/\///g' -e 's/\s+/\n/g' } "qalc: " %{
-      set-register '"' %sh{ echo "$kak_text" | qalc -t +u8 -f - }
-      echo %reg{"}
-    }
-}
-
 define-command bc -docstring "simple math with bc" %{
   prompt -init %val{selection} "bc: " %{
     set-register '"' %sh{ echo "scale=3; $kak_text" | bc -l -q }
