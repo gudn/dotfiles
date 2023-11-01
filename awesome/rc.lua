@@ -15,8 +15,6 @@ local awful = require("awful")
 -- User Configuration
 -- ===================================================================
 
-local display_scale = 0.6
-
 local confdir = gears.filesystem.get_configuration_dir()
 
 local themes = {
@@ -58,7 +56,7 @@ local run_on_start_up = {
    "xfce4-clipman",
    "light-locker",
    "xfce4-power-manager",
-   "fish " .. confdir .. "/init.fish --scale=" .. display_scale,
+   "fish " .. confdir .. "/init.fish"
 }
 
 -- ===================================================================

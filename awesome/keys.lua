@@ -599,42 +599,50 @@ keys.clientkeys = gears.table.join(
    awful.key({modkey, "Shift"}, "Down",
       function(c)
          move_client(c, "down")
-      end
+      end,
+      {description = "move client down", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "Up",
       function(c)
          move_client(c, "up")
-      end
+      end,
+      {description = "move client up", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "Left",
       function(c)
          move_client(c, "left")
-      end
+      end,
+      {description = "move client left", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "Right",
       function(c)
          move_client(c, "right")
-      end
+      end,
+      {description = "move client right", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "j",
       function(c)
          move_client(c, "down")
-      end
+      end,
+      {description = "move client down", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "k",
       function(c)
          move_client(c, "up")
-      end
+      end,
+      {description = "move client up", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "h",
       function(c)
          move_client(c, "left")
-      end
+      end,
+      {description = "move client left", group = "client"}
    ),
    awful.key({modkey, "Shift"}, "l",
       function(c)
          move_client(c, "right")
-      end
+      end,
+      {description = "move client right", group = "client"}
    ),
 
    -- toggle fullscreen
@@ -649,6 +657,14 @@ keys.clientkeys = gears.table.join(
    awful.key({modkey}, "g",
       awful.client.floating.toggle,
       {description = "toggle floating", group = "client"}
+   ),
+
+   -- move to another screen
+   awful.key({modkey}, "s",
+     function(c)
+       c:move_to_screen()
+     end,
+     {description = "move client to next screen", group = "client"}
    ),
 
    -- close client

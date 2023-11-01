@@ -133,12 +133,6 @@ function rules.create(clientkeys, clientbuttons)
          rule_any = {role = {"GtkFileChooserDialog"}},
          properties = {floating = true, width = screen_width * 0.55, height = screen_height * 0.65}
       },
-
-      -- Pavucontrol & Bluetooth Devices
-      {
-         rule_any = {class = {"Pavucontrol"}, name = {"Bluetooth Devices"}},
-         properties = {floating = true, width = screen_width * 0.55, height = screen_height * 0.45}
-      },
    }
 end
 
