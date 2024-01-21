@@ -7,3 +7,7 @@ hook global WinSetOption filetype=python %{
   set-option buffer indentwidth 4
   set-option buffer tabstop 4
 }
+
+hook global WinSetOption filetype=makefile %{
+  set-option buffer aligntab true
+}
