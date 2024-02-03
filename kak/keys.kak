@@ -7,6 +7,7 @@ map -docstring "open a file" global user f ': open<ret>'
 map -docstring "open a file near current" global user F ': open %sh{ dirname $kak_buffile }<ret>'
 map -docstring "simple math with bc" global user = ': bc<ret>'
 map -docstring "send to repl" global user s ': repl-send-text<ret>'
+map -docstring "run async command" global user a ': async '
 
 map global normal <esc> ";,"
 
