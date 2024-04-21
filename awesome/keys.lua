@@ -227,7 +227,7 @@ keys.globalkeys = gears.table.join(
    -- ALSA volume control
    awful.key({}, "XF86AudioRaiseVolume",
       function()
-         awful.spawn.easy_async("pactl set-sink-volume @DEFAULT_SINK@ +5%", function()
+         awful.spawn.easy_async("wpctl set-volume @DEFAULT_SINK@ 5%+", function()
             awesome.emit_signal("volume_change")
          end)
       end,
@@ -235,7 +235,7 @@ keys.globalkeys = gears.table.join(
    ),
    awful.key({}, "XF86AudioLowerVolume",
       function()
-         awful.spawn.easy_async("pactl set-sink-volume @DEFAULT_SINK@ -5%", function()
+         awful.spawn.easy_async("wpctl set-volume @DEFAULT_SINK@ 5%-", function()
             awesome.emit_signal("volume_change")
          end)
       end,
@@ -243,7 +243,7 @@ keys.globalkeys = gears.table.join(
    ),
    awful.key({}, "XF86AudioMute",
       function()
-         awful.spawn.easy_async("pactl set-sink-mute @DEFAULT_SINK@ toggle", function()
+         awful.spawn.easy_async("wpctl set-mute @DEFAULT_SINK@ toggle", function()
             awesome.emit_signal("volume_change")
          end)
       end,
@@ -251,7 +251,7 @@ keys.globalkeys = gears.table.join(
    ),
    awful.key({}, "XF86AudioMicMute",
       function()
-         awful.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle", false)
+         awful.spawn("wpctl set-mute @DEFAULT_SOURCE@ toggle", false)
          awesome.emit_signal("volume_change")
       end,
       {description = "toggle microphone", group = "hotkeys"}
