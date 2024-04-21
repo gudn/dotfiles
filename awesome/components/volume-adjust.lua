@@ -86,15 +86,31 @@ awesome.connect_signal("volume_change",
    function()
       -- set new volume value
       awful.spawn.easy_async_with_shell(
-         "amixer sget Master | grep 'Right:' | awk -F '[][]' '{print $2, $4}'",
+         "wpctl get-volume @DEFAULT_SINK@",
          function(stdout)
-            local percent, _ = string.find(stdout, "%", 1, true)
-            local is_on = string.sub(stdout, percent + 2) == "on\n"
-            local volume_level = tonumber(string.sub(stdout, 1, percent - 1))
-            if (volume_level == nil) then
+            local muted_pos = string.find(stdout, "MUTED")
+            local volume_level = 0
+            local is_on = true
+            if muted_pos == nil then
+              volume_level = tonumber(string.sub(stdout, 9))
+            else
+              is_on = false
+              muted_pos, _ = muted_pos
+              volume_level = tonumber(string.sub(stdout, 9, muted_pos - 3))
+            end
+            if volume_level == nil then
                volume_level = 0
             end
+            volume_level = volume_level * 100
+
+            if volume_level > 100 then
+              volume_bar.background_color = "#900603"
+              volume_level = volume_level - 100
+            else
+              volume_bar.background_color = beautiful.bg_focus
+            end
             volume_bar.value = volume_level
+
             if is_on then
                volume_icon:set_image(icon_dir .. "volume.png")
             else
