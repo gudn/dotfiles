@@ -11,3 +11,13 @@ hook global WinSetOption filetype=python %{
 hook global WinSetOption filetype=makefile %{
   set-option buffer aligntab true
 }
+
+hook global WinSetOption filetype=go %{
+  set-option buffer aligntab true
+  set-option buffer tabstop 2
+  set-option buffer indentwidth 2
+}
+
+hook global WinSetOption filetype=java %{
+  map -docstring "sort imports" buffer user i '<a-i>p|sort<ret>;'
+}
