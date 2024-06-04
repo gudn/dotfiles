@@ -56,7 +56,8 @@ local run_on_start_up = {
    "xfce4-clipman",
    "light-locker",
    "xfce4-power-manager",
-   "fish " .. confdir .. "/init.fish"
+   "fish " .. confdir .. "/init.fish",
+   "gromit-mpx"
 }
 
 -- ===================================================================
