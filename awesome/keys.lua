@@ -141,7 +141,18 @@ keys.globalkeys = gears.table.join(
    awful.key({modkey}, "Return",
       function()
          local screen = awful.screen.focused()
-         awful.spawn.raise_or_spawn(apps.terminal, {
+         local tag = screen.tags[4]
+         if tag then
+            tag:view_only()
+         end
+         awful.spawn.raise_or_spawn(apps.terminal, {})
+      end,
+      {description = "open a terminal", group = "launcher"}
+   ),
+   awful.key({modkey, "Shift"}, "Return",
+      function()
+         local screen = awful.screen.focused()
+         awful.spawn(apps.terminal, {
             floating = true,
             width = 3/8 * screen.geometry.width,
             height = 3/7 * screen.geometry.height,
@@ -153,40 +164,12 @@ keys.globalkeys = gears.table.join(
       end,
       {description = "open a floating terminal", group = "launcher"}
    ),
-   awful.key({modkey, "Shift"}, "Return",
-      function()
-         awful.spawn(apps.terminal)
-      end,
-      {description = "open a terminal", group = "launcher"}
-   ),
    -- launch rofi
    awful.key({modkey}, "d",
       function()
          awful.spawn(apps.launcher)
       end,
       {description = "application launcher", group = "launcher"}
-   ),
-   -- launch editor
-   awful.key({modkey, "Shift"}, "e",
-      function()
-          awful.spawn.raise_or_spawn(apps.editor)
-      end,
-      {description = "open a editor", group = "launcher"}
-   ),
-   awful.key({modkey}, "e",
-      function()
-         local screen = awful.screen.focused()
-         awful.spawn.raise_or_spawn(apps.inline_editor, {
-           floating = true,
-           width = 1/3 * screen.geometry.width,
-           height = 3/8 * screen.geometry.height,
-           placement = function(c)
-               awful.placement.under_mouse(c)
-               awful.placement.no_offscreen(c)
-           end
-         })
-      end,
-      {description = "open a inline editor", group = "launcher"}
    ),
 
    -- spawn a telegram
@@ -200,7 +183,24 @@ keys.globalkeys = gears.table.join(
          awful.spawn.raise_or_spawn(apps.telegram, {})
       end,
       {description = "open a telegram", group = "launcher"}
-  ),
+   ),
+
+   -- =========================================
+   -- Screen control
+   -- =========================================
+
+   awful.key({modkey}, "o",
+     function()
+       awful.spawn.spawn("/home/daniilnovoselov/.screenlayout/single.sh")
+     end,
+     {description = "use laptop screen", group = "display"}
+   ),
+   awful.key({modkey}, "p",
+     function()
+       awful.spawn.spawn("/home/daniilnovoselov/.screenlayout/hdmi.sh")
+     end,
+     {description = "use laptop screen", group = "display"}
+   ),
 
    -- =========================================
    -- FUNCTION KEYS

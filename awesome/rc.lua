@@ -35,8 +35,6 @@ apps = {
    lock = "light-locker-command --lock",
    screenshot = "flameshot gui",
    filebrowser = "thunar",
-   editor = "codium",
-   inline_editor = "kitty -e kak",
    telegram = "telegram-desktop",
    browser = "google-chrome-stable"
 }
@@ -57,7 +55,8 @@ local run_on_start_up = {
    "light-locker",
    "xfce4-power-manager",
    "fish " .. confdir .. "/init.fish",
-   "gromit-mpx"
+   "gromit-mpx",
+   "/usr/bin/python3 /usr/bin/caffeine"
 }
 
 -- ===================================================================
