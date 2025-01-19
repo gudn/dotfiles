@@ -1,0 +1,16 @@
+fish_variables
+functions/
+!functions/alpine.fish
+!functions/cb.fish
+!functions/df.fish
+!functions/envsource.fish
+!functions/fisher.fish
+!functions/fish_prompt.fish
+!functions/gen-hexint.fish
+!functions/hg.fish
+!functions/icat.fish
+!functions/iplot.fish
+!functions/kssh.fish
+!functions/ndx.fish
+!functions/sdk.fish
+
