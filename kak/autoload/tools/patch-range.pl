@@ -1,0 +1,1 @@
+/usr/share/kak/autoload/tools/patch-range.pl
